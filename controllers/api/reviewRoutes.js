@@ -1,0 +1,1 @@
+// Manages routes related to reviews (e.g., submitting a review, retrieving reviews)

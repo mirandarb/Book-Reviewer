@@ -1,0 +1,1 @@
+// Middleware for protecting routes that require authentication
