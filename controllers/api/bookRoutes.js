@@ -1,0 +1,1 @@
+// Handles routes for book-related data (e.g., retrieving book details, adding new books).

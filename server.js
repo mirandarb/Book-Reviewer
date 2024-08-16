@@ -1,0 +1,1 @@
+// The entry point for your Node.js server, setting up Express, middleware, routes, and database synchronization

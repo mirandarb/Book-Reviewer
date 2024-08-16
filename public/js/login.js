@@ -1,0 +1,1 @@
+// Handles login functionality on the client side

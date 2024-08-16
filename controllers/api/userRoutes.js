@@ -1,0 +1,1 @@
+// Handles user-related routes like login, registration, etc.

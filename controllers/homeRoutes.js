@@ -1,0 +1,1 @@
+// Manages routes for static pages like the homepage or other general routes
