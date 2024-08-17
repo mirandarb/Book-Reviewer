@@ -1,0 +1,21 @@
+[
+    {
+      "rating": 5,
+      "content": "An absolute classic. The themes and the writing style are as relevant today as they were when it was first published.",
+      "book_id": 1,
+      "user_id": 1
+    },
+    {
+      "rating": 4,
+      "content": "A gripping dystopian novel that makes you think about the direction our society is heading. A must-read.",
+      "book_id": 2,
+      "user_id": 2
+    },
+    {
+      "rating": 3,
+      "content": "A good read with deep characters, but the pacing was a bit slow for my taste.",
+      "book_id": 3,
+      "user_id": 3
+    }
+  ]
+  
