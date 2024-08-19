@@ -1,0 +1,33 @@
+<section class="book-list">
+  {{#each books}}
+    <div class="book">
+      <h2><a href="/book/{{id}}">{{title}}</a></h2>
+      <p>{{description}}</p>
+    </div>
+  {{/each}}
+</section>
+
+{{#if logged_in}}
+  <section class="new-book">
+    <h2>Add a New Book</h2>
+    <form class="new-book-form">
+      <div>
+        <label for="book-title">Title:</label>
+        <input type="text" id="book-title" name="title">
+      </div>
+      <div>
+        <label for="book-author">Author:</label>
+        <input type="text" id="book-author" name="author">
+      </div>
+      <div>
+        <label for="book-genre">Genre:</label>
+        <input type="text" id="book-genre" name="genre">
+      </div>
+      <div>
+        <label for="book-description">Description:</label>
+        <textarea id="book-description" name="description"></textarea>
+      </div>
+      <button type="submit">Add Book</button>
+    </form>
+  </section>
+{{/if}}
