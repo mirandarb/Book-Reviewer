@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <h1><a href="/">Book Review Blog</a></h1>
+      <div>
+        {{#if logged_in}}
+          <a href="/profile">Profile</a>
+          <button id="logout">Logout</button>
+        {{else}}
+          <a href="/login">Login</a>
+        {{/if}}
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    {{{ body }}}
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Book Review Blog. All rights reserved.</p>
+  </footer>
+
+  {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>
