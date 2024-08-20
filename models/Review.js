@@ -1,28 +1,46 @@
-// Defines the Review model, linking reviews to books and use
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Reviews extends Model {}
+class Review extends Model {}
 
-Reviews.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        review: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+Review.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'reviews',
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-)
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
+    book_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'book',
+        key: 'id',
+      },
+    },
+  },
+  {
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'review',
+  }
+);
 
-module.exports = Reviews;
+module.exports = Review;
