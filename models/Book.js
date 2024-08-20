@@ -17,7 +17,7 @@ Book.init(
             allowNull: false,
         },
         author: {
-            type: DataType.STRING,
+            type: DataTypes.STRING,
         },
         
     },
