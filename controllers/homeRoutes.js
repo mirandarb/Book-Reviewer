@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 const { Book, Review, User } = require('../models');
-const withAuth = require('../utils/auth');
+const auth = require('../utils/auth');
 
 // Homepage route - shows all books
 router.get('/', async (req, res) => {
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 
     res.render('homepage', { 
       books, 
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in || false
     });
   } catch (err) {
     res.status(500).json(err);
@@ -26,6 +26,11 @@ router.get('/book/:id', async (req, res) => {
       include: [{ model: Review, include: [User] }]
     });
 
+    if (!bookData) {
+      res.status(404).json({ message: 'No book found with this id!' });
+      return;
+    }
+
     const book = bookData.get({ plain: true });
 
     res.render('book', {
@@ -37,13 +42,18 @@ router.get('/book/:id', async (req, res) => {
   }
 });
 
-// Profile route - user-specific content
-router.get('/profile', withAuth, async (req, res) => {
+// Profile route - shows the user's profile and reviews
+router.get('/profile', auth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Review }]
+      include: [{ model: Review, include: [Book] }]
     });
+
+    if (!userData) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
 
     const user = userData.get({ plain: true });
 
@@ -65,5 +75,11 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+// Test route
+router.get('/test', (req, res) => {
+  res.send('Test route works!');
+});
+
 
 module.exports = router;

@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 const { Book } = require('../../models');
-const withAuth = require('../../utils/auth');
+const auth = require('../../utils/auth');
 
 // Get all books
 router.get('/', async (req, res) => {
@@ -29,9 +29,13 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create a new book
-router.post('/', withAuth, async (req, res) => {
+router.post('/', auth, async (req, res) => {
   try {
-    const newBook = await Book.create(req.body);
+    const newBook = await Book.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+
     res.status(200).json(newBook);
   } catch (err) {
     res.status(400).json(err);

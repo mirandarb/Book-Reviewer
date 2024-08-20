@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS bookreviewer_db;
-CREATE DATABASE bookreviewer_db;
+DROP DATABASE IF EXISTS bookreviews_db;
+CREATE DATABASE bookreviews_db;

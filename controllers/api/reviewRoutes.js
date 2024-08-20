@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 const { Review } = require('../../models');
-const withAuth = require('../../utils/auth');
+const auth = require('../../utils/auth');
 
 // Get all reviews for a specific book
 router.get('/book/:bookId', async (req, res) => {
@@ -19,7 +19,7 @@ router.get('/book/:bookId', async (req, res) => {
 });
 
 // Create a new review
-router.post('/', withAuth, async (req, res) => {
+router.post('/', auth, async (req, res) => {
   try {
     const newReview = await Review.create({
       ...req.body,
