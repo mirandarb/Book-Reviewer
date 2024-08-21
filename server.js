@@ -1,10 +1,10 @@
-// The entry point for your Node.js server, setting up Express, middleware, routes, and database synchronizationconst path = require('path');
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
-const hbs = require('express-handlebars');
+const exphbs = require('express-handlebars');
 require('dotenv').config();
-const path = require('path');
 const routes = require('./controllers');
+// Uncomment the next line if you have helpers
 // const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
-const hbsEngine = hbs.create({});
+const hbs = exphbs.create({}); // Add helpers here if you have them
 
 const sess = {
   secret: process.env.SESSION_SECRET,
@@ -34,7 +34,7 @@ const sess = {
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
-app.engine('handlebars', hbsEngine.engine);
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
@@ -42,6 +42,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
-sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
