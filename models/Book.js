@@ -18,6 +18,7 @@ Book.init(
         },
         author: {
             type: DataTypes.STRING,
+            allowNull: false,
         },
         
     },

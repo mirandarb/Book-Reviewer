@@ -1,5 +1,3 @@
-// Manages routes for static pages like the homepage or other general routes
-
 const router = require('express').Router();
 const { Book, Review, User } = require('../models');
 const auth = require('../utils/auth');
@@ -16,29 +14,7 @@ router.get('/', async (req, res) => {
       logged_in: req.session.logged_in || false
     });
   } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Book detail route - shows a single book and its reviews
-router.get('/book/:id', async (req, res) => {
-  try {
-    const bookData = await Book.findByPk(req.params.id, {
-      include: [{ model: Review, include: [User] }]
-    });
-
-    if (!bookData) {
-      res.status(404).json({ message: 'No book found with this id!' });
-      return;
-    }
-
-    const book = bookData.get({ plain: true });
-
-    res.render('book', {
-      ...book,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
+    console.error('Error fetching all books:', err);
     res.status(500).json(err);
   }
 });
@@ -46,12 +22,12 @@ router.get('/book/:id', async (req, res) => {
 // Book search
 router.get('/book/:title', async (req, res) => {
   try {
-    console.log('Searching for book:', req.params.title); // Logging the search term
+    console.log('Searching for book:', req.params.title);
 
     const bookData = await Book.findOne({
       where: {
         title: {
-          [Op.iLike]: `%${req.params.title}%` // Case-insensitive, partial match
+          [Op.iLike]: `%${req.params.title}%`
         }
       },
       include: [
@@ -62,7 +38,7 @@ router.get('/book/:title', async (req, res) => {
       ]
     });
 
-    console.log('Book data:', bookData); // Logging the result
+    console.log('Book data:', bookData);
 
     if (bookData) {
       const book = bookData.get({ plain: true });
@@ -71,11 +47,25 @@ router.get('/book/:title', async (req, res) => {
         logged_in: req.session.logged_in
       });
     } else {
-      console.log('No book found'); // Logging when no book is found
-      res.status(404).json({ message: 'No book found with this title' });
+      console.log('No book found for title:', req.params.title);
+      res.render('no-results', { 
+        searchTerm: req.params.title,
+        logged_in: req.session.logged_in
+      });
     }
   } catch (err) {
-    console.error('Error in book search:', err); // Logging any errors
+    console.error('Error in book search:', err);
+    res.status(500).json(err);
+  }
+});
+
+// API route to get all books
+router.get('/api/books', async (req, res) => {
+  try {
+    const books = await Book.findAll();
+    res.json(books);
+  } catch (err) {
+    console.error('Error fetching books:', err);
     res.status(500).json(err);
   }
 });
@@ -86,10 +76,10 @@ router.get('/allbooks', async (req, res) => {
     const bookData = await Book.findAll();
     res.json(bookData);
   } catch (err) {
+    console.error('Error fetching all books:', err);
     res.status(500).json(err);
   }
 });
-
 
 // Profile route - shows the user's profile and reviews
 router.get('/profile', auth, async (req, res) => {
@@ -109,6 +99,7 @@ router.get('/profile', auth, async (req, res) => {
       logged_in: true
     });
   } catch (err) {
+    console.error('Error fetching user profile:', err);
     res.status(500).json(err);
   }
 });
@@ -127,6 +118,5 @@ router.get('/login', (req, res) => {
 router.get('/test', (req, res) => {
   res.send('Test route works!');
 });
-
 
 module.exports = router;
