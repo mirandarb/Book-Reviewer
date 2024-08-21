@@ -3,6 +3,7 @@
 const router = require('express').Router();
 const { Book, Review, User } = require('../models');
 const auth = require('../utils/auth');
+const { Op } = require('sequelize');
 
 // Homepage route - shows all books
 router.get('/', async (req, res) => {
@@ -42,18 +43,64 @@ router.get('/book/:id', async (req, res) => {
   }
 });
 
+// Book search
+router.get('/book/:title', async (req, res) => {
+  try {
+    console.log('Searching for book:', req.params.title); // Logging the search term
+
+    const bookData = await Book.findOne({
+      where: {
+        title: {
+          [Op.iLike]: `%${req.params.title}%` // Case-insensitive, partial match
+        }
+      },
+      include: [
+        {
+          model: Review,
+          include: [User]
+        }
+      ]
+    });
+
+    console.log('Book data:', bookData); // Logging the result
+
+    if (bookData) {
+      const book = bookData.get({ plain: true });
+      res.render('book', {
+        ...book,
+        logged_in: req.session.logged_in
+      });
+    } else {
+      console.log('No book found'); // Logging when no book is found
+      res.status(404).json({ message: 'No book found with this title' });
+    }
+  } catch (err) {
+    console.error('Error in book search:', err); // Logging any errors
+    res.status(500).json(err);
+  }
+});
+
+// View all books 
+router.get('/allbooks', async (req, res) => {
+  try {
+    const bookData = await Book.findAll();
+    res.json(bookData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 // Profile route - shows the user's profile and reviews
 router.get('/profile', auth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Review, include: [Book] }]
+      include: [{ 
+        model: Review,
+        include: [{ model: Book, attributes: ['title'] }]
+      }],
     });
-
-    if (!userData) {
-      res.status(404).json({ message: 'User not found' });
-      return;
-    }
 
     const user = userData.get({ plain: true });
 

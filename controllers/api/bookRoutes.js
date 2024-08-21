@@ -42,4 +42,37 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
+router.get('/search/:term', async (req, res) => {
+  try {
+    const bookData = await Book.findAll({
+      where: {
+        title: {
+          [Op.iLike]: `%${req.params.term}%`
+        }
+      },
+      limit: 5
+    });
+    res.json(bookData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/title/:title', async (req, res) => {
+  try {
+    const bookData = await Book.findOne({
+      where: {
+        title: req.params.title
+      }
+    });
+    if (bookData) {
+      res.json(bookData);
+    } else {
+      res.status(404).json({ message: 'No book found with this title' });
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
