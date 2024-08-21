@@ -1,0 +1,46 @@
+<section class="book-detail">
+  <h2>{{title}}</h2>
+  <p>Author: {{author}}</p>
+  <p>Genre: {{genre}}</p>
+  <p>{{description}}</p>
+
+  <div class="reviews">
+    <h3>Reviews:</h3>
+    {{#if reviews.length}}
+      {{#each reviews}}
+        <div class="review">
+          <p>Rating: {{rating}}/5</p>
+          <p>{{content}}</p>
+          <p>Reviewed by: {{user.name}}</p>
+        </div>
+      {{/each}}
+    {{else}}
+      <p>No reviews yet. Be the first to review!</p>
+    {{/if}}
+  </div>
+
+  {{#if logged_in}}
+    <section class="new-review">
+      <h3>Add a Review</h3>
+      <form class="review-form">
+        <input type="hidden" id="book-id" value="{{id}}">
+        <div>
+          <label for="review-rating">Rating:</label>
+          <select id="review-rating" name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div>
+          <label for="review-content">Review:</label>
+          <textarea id="review-content" name="content"></textarea>
+        </div>
+        <button type="submit">Submit Review</button>
+      </form>
+    </section>
+    <script src="/js/review.js"></script>
+  {{/if}}
+</section>

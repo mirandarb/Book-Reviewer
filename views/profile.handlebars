@@ -1,0 +1,18 @@
+<section class="profile">
+  <h2>Welcome, {{name}}!</h2>
+
+  <div class="reviews">
+    <h3>Your Reviews:</h3>
+    {{#if reviews.length}}
+      {{#each reviews}}
+        <div class="review">
+          <h4>{{book.title}}</h4>
+          <p>Rating: {{rating}}/5</p>
+          <p>{{content}}</p>
+        </div>
+      {{/each}}
+    {{else}}
+      <p>You haven't reviewed any books yet.</p>
+    {{/if}}
+  </div>
+</section>

@@ -1,0 +1,63 @@
+[
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Classic",
+      "description": "A novel about the American dream and the downfall of those who attempt to reach its illusionary goals."
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Dystopian",
+      "description": "A story of a totalitarian regime that uses surveillance, censorship, and repression to control its citizens."
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Classic",
+      "description": "A novel set in the Deep South, focusing on themes of racial injustice and moral growth."
+    },
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "genre": "Romance",
+      "description": "A classic novel about the manners and matrimonial machinations among the British gentry of the early 19th century."
+    },
+    {
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Classic",
+      "description": "A story about adolescent angst and alienation in post-war America."
+    },
+    {
+      "title": "Moby-Dick",
+      "author": "Herman Melville",
+      "genre": "Adventure",
+      "description": "A thrilling adventure of a man's obsessive quest to kill a giant white whale."
+    },
+    {
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "genre": "Dystopian",
+      "description": "A futuristic society where technology and conditioning have eliminated unhappiness, at the cost of individuality and freedom."
+    },
+    {
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "description": "An epic fantasy adventure about the struggle between good and evil in the fictional world of Middle-earth."
+    },
+    {
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "description": "A prelude to The Lord of the Rings, chronicling the journey of Bilbo Baggins and his quest for treasure."
+    },
+    {
+      "title": "The Da Vinci Code",
+      "author": "Dan Brown",
+      "genre": "Thriller",
+      "description": "A mystery thriller that explores the secrets hidden within the works of Leonardo da Vinci."
+    }
+  ]
+  

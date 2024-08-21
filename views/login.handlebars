@@ -1,0 +1,39 @@
+<section class="auth">
+  <div id="login-form">
+    <h2>Login</h2>
+    <form class="login-form">
+      <div>
+        <label for="email-login">Email:</label>
+        <input type="email" id="email-login" name="email">
+      </div>
+      <div>
+        <label for="password-login">Password:</label>
+        <input type="password" id="password-login" name="password">
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#" id="show-signup">Sign up instead</a></p>
+  </div>
+
+  <div id="signup-form" style="display: none;">
+    <h2>Signup</h2>
+    <form class="signup-form">
+      <div>
+        <label for="name-signup">Name:</label>
+        <input type="text" id="name-signup" name="name">
+      </div>
+      <div>
+        <label for="email-signup">Email:</label>
+        <input type="email" id="email-signup" name="email">
+      </div>
+      <div>
+        <label for="password-signup">Password:</label>
+        <input type="password" id="password-signup" name="password">
+      </div>
+      <button type="submit">Signup</button>
+    </form>
+    <p>Already have an account? <a href="#" id="show-login">Login instead</a></p>
+  </div>
+</section>
+
+<script src="/js/login.js"></script>
