@@ -1,5 +1,5 @@
 <section class="auth">
-  <div class="login">
+  <div id="login-form">
     <h2>Login</h2>
     <form class="login-form">
       <div>
@@ -12,9 +12,10 @@
       </div>
       <button type="submit">Login</button>
     </form>
+    <p>Don't have an account? <a href="#" id="show-signup">Sign up instead</a></p>
   </div>
 
-  <div class="signup">
+  <div id="signup-form" style="display: none;">
     <h2>Signup</h2>
     <form class="signup-form">
       <div>
@@ -31,5 +32,8 @@
       </div>
       <button type="submit">Signup</button>
     </form>
+    <p>Already have an account? <a href="#" id="show-login">Login instead</a></p>
   </div>
 </section>
+
+<script src="/js/login.js"></script>
