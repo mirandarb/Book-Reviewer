@@ -122,4 +122,20 @@
     background-color: #333;
     color: #fff;
   }
+
+  .btn-login, .btn-logout {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-login:hover, .btn-logout:hover {
+    background-color: #555;
+  }
   
