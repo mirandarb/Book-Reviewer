@@ -1,14 +1,17 @@
-<section class="book-list">
-  {{#each books}}
-    <div class="book">
-      <h2><a href="/book/{{id}}">{{title}}</a></h2>
-      <p>{{description}}</p>
-    </div>
-  {{/each}}
-</section>
+<h1>Welcome to the Book Review Blog</h1>
 
 {{#if logged_in}}
-  <section class="new-book">
+  <button id="search-books-btn">Search Books</button>
+  <button id="add-book-btn">Add Book</button>
+
+  <div id="search-container" style="display: none;">
+    <input type="text" id="book-search" placeholder="Search for a book...">
+    <div id="search-results"></div>
+    <button id="search-submit">Search</button>
+  </div>
+
+  <div id="add-book-form" style="display: none;">
+    <section class="new-book">
     <h2>Add a New Book</h2>
     <form class="new-book-form">
       <div>
@@ -29,5 +32,36 @@
       </div>
       <button type="submit">Add Book</button>
     </form>
-  </section>
+    </section>
+  </div>
+
+  <div id="book-details" style="display: none;">
+    <h2 id="book-title"></h2>
+    <p id="book-author"></p>
+    <p id="book-description"></p>
+    <button id="add-review-btn">Add Review</button>
+  </div>
+
+  <div id="review-form" style="display: none;">
+    <h3>Add a Review</h3>
+    <form id="new-review-form">
+      <input type="hidden" id="book-id-input">
+      <label for="rating">Rating:</label>
+      <select id="rating" name="rating" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <label for="review-content">Review:</label>
+      <textarea id="review-content" name="content" required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+  </div>
+{{else}}
+  <p>Please <a href="/login">login</a> to access all features.</p>
 {{/if}}
+
+<script src="/js/homepage.js"></script>
+<script src="/js/add-book.js"></script>

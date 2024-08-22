@@ -18,6 +18,11 @@ Book.init(
         },
         author: {
             type: DataTypes.STRING,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true,
         },
         
     },
