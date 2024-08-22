@@ -71,10 +71,19 @@ router.get('/api/books', async (req, res) => {
 });
 
 // View all books 
+
 router.get('/allbooks', async (req, res) => {
   try {
-    const bookData = await Book.findAll();
-    res.json(bookData);
+    const bookData = await Book.findAll({
+      attributes: ['id', 'title'],
+      order: [['title', 'ASC']]
+    });
+    const books = bookData.map((book) => book.get({ plain: true }));
+
+    res.render('all-books', { 
+      books, 
+      logged_in: req.session.logged_in || false
+    });
   } catch (err) {
     console.error('Error fetching all books:', err);
     res.status(500).json(err);

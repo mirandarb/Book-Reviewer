@@ -138,4 +138,36 @@
   .btn-login:hover, .btn-logout:hover {
     background-color: #555;
   }
+
+  .book-list {
+    margin-top: 20px;
+  }
+  
+  .book-item {
+    margin-bottom: 10px;
+  }
+  
+  .book-item a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .book-item a:hover {
+    text-decoration: underline;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
   
