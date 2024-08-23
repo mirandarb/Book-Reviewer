@@ -2,20 +2,17 @@
   <h2>{{title}}</h2>
   <p><strong>Author:</strong> {{author}}</p>
   <p><strong>Description:</strong> {{description}}</p>
+</div>
 
-  <h3>Reviews:</h3>
-  {{#if reviews.length}}
-    {{#each reviews as |review|}}
-      <div class="review">
-        <p><strong>Rating:</strong> {{review.rating}}/5</p>
-        <p><strong>Review:</strong> {{review.content}}</p>
-        <p><strong>By:</strong> {{review.user.name}}</p>
-      </div>
-    {{/each}}
-  {{else}}
-    <p>No reviews yet.</p>
-  {{/if}}
-
+<div class="reviews-section">
+  <h3 class="review-count">
+    {{#if reviews.length}}
+      {{reviews.length}} Reviews
+    {{else}}
+      No Reviews Yet
+    {{/if}}
+  </h3>
+  
   {{#if logged_in}}
     <button id="add-review-btn" class="btn">Add Review</button>
     <div id="review-form" style="display: none;">
@@ -36,6 +33,16 @@
       </form>
     </div>
   {{/if}}
+
+  <div class="reviews-container">
+    {{#each reviews as |review|}}
+      <div class="review">
+        <p><strong>Rating:</strong> {{review.rating}}/5</p>
+        <p><strong>Review:</strong> {{review.content}}</p>
+        <p><strong>By:</strong> {{review.user.name}}</p>
+      </div>
+    {{/each}}
+  </div>
 </div>
 
 <script src="/js/book.js"></script>

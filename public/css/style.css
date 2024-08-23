@@ -178,3 +178,39 @@ button {
 .book-item a:hover {
   text-decoration: underline;
 }
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+
+.reviews-container .review {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.book-details {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.reviews-section {
+  margin-top: 30px;
+}
+
+.review-count {
+  margin-bottom: 20px;
+}
+
+.reviews-container {
+  margin-top: 20px;
+}
+
+.review {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
