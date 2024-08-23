@@ -1,14 +1,14 @@
 <h1>Welcome to the Book Review Blog</h1>
 
 {{#if logged_in}}
-  <button id="search-books-btn">Search Books</button>
-  <button id="add-book-btn">Add Book</button>
-  <a href="/allbooks" class="btn btn-primary">Show All Books</a>
+  <button id="search-books-btn" class="btn">Search Books</button>
+  <button id="add-book-btn" class="btn">Add Book</button>
+  <a href="/allbooks" class="button">Show All Books</a>
 
   <div id="search-container" style="display: none;">
     <input type="text" id="book-search" placeholder="Search for a book...">
     <div id="search-results"></div>
-    <button id="search-submit">Search</button>
+    <button id="search-submit" class="btn">Search</button>
   </div>
 
   <div id="add-book-form" style="display: none;">
@@ -31,7 +31,7 @@
         <label for="book-description">Description:</label>
         <textarea id="book-description" name="description"></textarea>
       </div>
-      <button type="submit">Add Book</button>
+      <button type="submit" class="btn">Add Book</button>
     </form>
     </section>
   </div>
@@ -40,7 +40,7 @@
     <h2 id="book-title"></h2>
     <p id="book-author"></p>
     <p id="book-description"></p>
-    <button id="add-review-btn">Add Review</button>
+    <button id="add-review-btn" class="btn">Add Review</button>
   </div>
 
   <div id="review-form" style="display: none;">
@@ -57,7 +57,7 @@
       </select>
       <label for="review-content">Review:</label>
       <textarea id="review-content" name="content" required></textarea>
-      <button type="submit">Submit Review</button>
+      <button type="submit" class="btn">Submit Review</button>
     </form>
   </div>
 {{else}}
