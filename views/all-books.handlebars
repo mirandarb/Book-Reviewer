@@ -1,0 +1,10 @@
+<h2>All Books</h2>
+<div class="book-list">
+  {{#each books as |book|}}
+    <div class="book-item">
+      <a href="/book/{{book.title}}">{{book.title}}</a>
+    </div>
+  {{else}}
+    <p>No books found.</p>
+  {{/each}}
+</div>
