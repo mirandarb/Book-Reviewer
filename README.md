@@ -17,4 +17,4 @@ The user will have to make a profile in order to leave reviews. Once they make a
 ## Links
 
     Github: https://github.com/mirandarb/Book-Reviewer
-    Deployment:
+    Deployment: https://book-reviewer-7tpk.onrender.com
